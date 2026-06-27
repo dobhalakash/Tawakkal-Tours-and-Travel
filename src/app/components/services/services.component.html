@@ -1,0 +1,31 @@
+<section class="services-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">What We Offer</span>
+      <h2>Travel Services Across <span class="gold">All India</span></h2>
+      <p>Comprehensive travel solutions for every need — from a single passenger to large groups</p>
+    </div>
+
+    <div class="services-grid">
+      <div *ngFor="let s of services; let i = index" class="service-card reveal" [style.transition-delay]="(i * 0.08) + 's'">
+        <div class="service-icon">{{s.icon}}</div>
+        <h3>{{s.title}}</h3>
+        <p>{{s.desc}}</p>
+        <button class="service-cta" (click)="bookService(s.route)">
+          Enquire Now →
+        </button>
+      </div>
+    </div>
+
+    <!-- Destinations Marquee -->
+    <div class="destinations-banner reveal">
+      <span class="section-label" style="margin-bottom:16px">We Travel To</span>
+      <div class="marquee-wrap">
+        <div class="marquee">
+          <span *ngFor="let d of destinations">{{d}} <span class="sep">•</span></span>
+          <span *ngFor="let d of destinations">{{d}} <span class="sep">•</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

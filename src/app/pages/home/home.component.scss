@@ -1,0 +1,109 @@
+.why-section {
+  padding: 80px 0;
+  background: #162233;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.why-card {
+  background: rgba(13,27,42,0.5);
+  border: 1px solid rgba(201,168,76,0.1);
+  border-radius: 14px;
+  padding: 28px 22px;
+  transition: all 0.3s;
+
+  &:hover {
+    border-color: rgba(201,168,76,0.35);
+    transform: translateY(-4px);
+    background: rgba(201,168,76,0.04);
+  }
+
+  .why-icon { font-size: 36px; margin-bottom: 14px; }
+  h3 { font-size: 17px; color: #F0EDE8; margin-bottom: 8px; }
+  p { font-size: 13px; color: #9BAABB; line-height: 1.65; }
+}
+
+.section-header {
+  h2 { font-size: clamp(26px, 4vw, 48px); color: #F0EDE8; margin-bottom: 12px; }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .why-section { padding: 60px 0; }
+  .why-grid { grid-template-columns: 1fr; gap: 14px; }
+  .why-card { padding: 20px 16px; }
+}
+
+/* ─── VEHICLE STRIP ─── */
+.vehicle-strip {
+  padding: 60px 0;
+  background: #0D1B2A;
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+}
+
+.strip-header {
+  text-align: center;
+  margin-bottom: 32px;
+  h2 { font-size: clamp(24px, 3.5vw, 40px); color: #F0EDE8; }
+}
+
+.strip-scroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201,168,76,0.3) transparent;
+
+  &::-webkit-scrollbar { height: 4px; }
+  &::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); border-radius: 2px; }
+}
+
+.strip-card {
+  flex: 0 0 200px;
+  background: #162233;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(201,168,76,0.12);
+  transition: all 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    border-color: rgba(201,168,76,0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+  }
+
+  .strip-img {
+    height: 130px;
+    overflow: hidden;
+    img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  }
+
+  &:hover .strip-img img { transform: scale(1.08); }
+
+  .strip-info {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .strip-type { font-size: 9px; color: #C9A84C; letter-spacing: 2px; text-transform: uppercase; font-family: 'Bebas Neue', sans-serif; }
+  .strip-name { font-size: 13px; color: #F0EDE8; font-weight: 600; }
+  .strip-seats { font-size: 11px; color: #9BAABB; }
+}
+
+@media (max-width: 600px) {
+  .strip-card { flex: 0 0 160px; }
+  .strip-card .strip-img { height: 110px; }
+}

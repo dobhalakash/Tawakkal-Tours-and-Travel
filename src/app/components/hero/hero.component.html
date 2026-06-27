@@ -1,0 +1,100 @@
+<section class="hero">
+  <!-- Slideshow Background -->
+  <div class="slider-wrap">
+    <div *ngFor="let slide of slides; let i = index"
+      class="slide"
+      [class.active]="i === currentSlide"
+      [class.prev]="i === (currentSlide - 1 + slides.length) % slides.length">
+      <img [src]="slide.bg" [alt]="slide.label" />
+    </div>
+    <div class="slide-overlay"></div>
+
+    <!-- Slide Caption -->
+    <div class="slide-caption" *ngFor="let slide of slides; let i = index" [class.active]="i === currentSlide">
+      <span class="slide-label">{{slide.label}}</span>
+      <span class="slide-sub">{{slide.sub}}</span>
+    </div>
+
+    <!-- Arrow Controls -->
+    <button class="arrow arrow-left" (click)="prevSlide()" aria-label="Previous">&#8249;</button>
+    <button class="arrow arrow-right" (click)="nextSlide()" aria-label="Next">&#8250;</button>
+
+    <!-- Dot indicators -->
+    <div class="dots">
+      <button *ngFor="let slide of slides; let i = index"
+        class="dot"
+        [class.active]="i === currentSlide"
+        (click)="goToSlide(i)"
+        [attr.aria-label]="'Slide ' + (i+1)">
+      </button>
+    </div>
+  </div>
+
+  <!-- Hero Content Overlay -->
+  <div class="hero-content container">
+    <div class="hero-text">
+      <span class="section-label">All India Travel Services</span>
+      <h1>
+        Journey Beyond<br>
+        <span class="gold">Borders,</span> Book<br>
+        With Tawakkal
+      </h1>
+      <p>Comfortable, reliable & affordable cab, tempo, mini bus and bus services across India. Your trusted travel partner.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/917385706568?text=Hello%2C%20I%20want%20to%20book%20a%20cab" target="_blank" class="btn-gold">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Book
+        </a>
+        <a href="tel:7385706568" class="btn-outline">📞 7385706568</a>
+      </div>
+    </div>
+
+    <!-- Booking Card -->
+    <div class="booking-card">
+      <h3>Plan Your Journey</h3>
+
+      <div class="vehicle-selector">
+        <button [class.active]="vehicleType==='cab'" (click)="vehicleType='cab'">🚖 Cab</button>
+        <button [class.active]="vehicleType==='tempo'" (click)="vehicleType='tempo'">🚐 Tempo</button>
+        <button [class.active]="vehicleType==='minibus'" (click)="vehicleType='minibus'">🚌 Mini Bus</button>
+        <button [class.active]="vehicleType==='bus'" (click)="vehicleType='bus'">🚍 Bus</button>
+      </div>
+
+      <div class="form-group">
+        <label>From</label>
+        <input type="text" [(ngModel)]="from" placeholder="Pick-up City / Location" />
+      </div>
+      <div class="form-group">
+        <label>To</label>
+        <input type="text" [(ngModel)]="to" placeholder="Drop-off City / Location" />
+      </div>
+      <div class="form-row-half">
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date" [(ngModel)]="date" />
+        </div>
+        <div class="form-group">
+          <label>Passengers</label>
+          <select [(ngModel)]="passengers">
+            <option *ngFor="let n of [1,2,3,4,5,6,7,8,9,10,12,17,20,40,50]" [value]="n">{{n}} Pax</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="btn-gold book-btn" (click)="bookNow()">
+        Get Quote on WhatsApp →
+      </button>
+      <p class="form-note">Instant response • Free quotation • No hidden charges</p>
+    </div>
+  </div>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="container stats-inner">
+      <div *ngFor="let s of stats" class="stat-item">
+        <span class="stat-num">{{s.num}}</span>
+        <span class="stat-label">{{s.label}}</span>
+      </div>
+    </div>
+  </div>
+</section>

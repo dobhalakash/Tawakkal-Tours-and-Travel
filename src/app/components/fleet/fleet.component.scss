@@ -1,0 +1,162 @@
+.fleet-section {
+  padding: 80px 0;
+  background: #0D1B2A;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+
+  h2 { font-size: clamp(26px, 4vw, 48px); color: #F0EDE8; margin-bottom: 12px; }
+  p { color: #9BAABB; font-size: 15px; max-width: 520px; margin: 0 auto; line-height: 1.7; }
+}
+
+.filter-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  padding: 0 16px;
+
+  button {
+    padding: 9px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(201,168,76,0.2);
+    background: rgba(201,168,76,0.06);
+    color: #9BAABB;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-family: 'DM Sans', sans-serif;
+
+    &.active, &:hover {
+      background: #C9A84C;
+      color: #0D1B2A;
+      border-color: #C9A84C;
+      font-weight: 700;
+    }
+  }
+}
+
+.vehicle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.vehicle-card {
+  background: #162233;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(201,168,76,0.12);
+  transition: all 0.35s;
+  position: relative;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba(201,168,76,0.4);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  }
+}
+
+.card-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: linear-gradient(135deg, #C9A84C, #A07830);
+  color: #0D1B2A;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.card-img {
+  position: relative;
+  height: 185px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(13,27,42,0.7) 0%, transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    padding: 12px;
+  }
+
+  .vehicle-type {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 3px;
+    color: rgba(201,168,76,0.8);
+    font-size: 12px;
+  }
+
+  .vehicle-card:hover & img { transform: scale(1.05); }
+}
+
+.card-body {
+  padding: 18px;
+
+  h3 { font-size: 16px; color: #F0EDE8; margin-bottom: 10px; }
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 14px;
+
+  .feature-tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 20px;
+    color: #9BAABB;
+  }
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 14px;
+}
+
+.price {
+  .price-from { font-size: 10px; color: #9BAABB; letter-spacing: 1px; text-transform: uppercase; display: block; }
+  .price-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #C9A84C;
+    font-weight: 700;
+
+    small { font-size: 11px; color: #9BAABB; font-family: 'DM Sans', sans-serif; }
+  }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .vehicle-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .fleet-section { padding: 60px 0; }
+  .vehicle-grid { grid-template-columns: 1fr; gap: 16px; }
+  .filter-tabs button { font-size: 12px; padding: 8px 14px; }
+  .card-img { height: 200px; }
+}

@@ -1,0 +1,73 @@
+<nav class="navbar" [class.scrolled]="scrolled">
+  <div class="nav-inner container">
+    <!-- Logo -->
+    <a routerLink="/" class="logo" (click)="closeMenu()">
+      <div class="logo-icon">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="22" fill="#0D1B2A" stroke="#C9A84C" stroke-width="2"/>
+          <path d="M12 32 Q24 14 36 32" stroke="#C9A84C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M16 30 Q24 20 32 30" stroke="#E8C97A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <circle cx="24" cy="16" r="3" fill="#C9A84C"/>
+          <path d="M20 36 L24 28 L28 36" fill="#C9A84C" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span class="logo-main">Tawakkal</span>
+        <span class="logo-sub">Tours & Travel</span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav -->
+    <ul class="nav-links">
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a></li>
+      <li class="dropdown">
+        <a href="#" (click)="$event.preventDefault()">Vehicles <span class="caret">▾</span></a>
+        <div class="dropdown-menu vehicle-tabs">
+          <div class="tab-bar">
+            <button *ngFor="let v of vehicleTypes"
+              [class.active]="activeVehicle === v.value"
+              (click)="setVehicle(v.value)">{{v.label}}</button>
+          </div>
+          <a routerLink="/vehicles" [queryParams]="{type: activeVehicle}" class="view-all-btn">View All Vehicles →</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a href="#" (click)="$event.preventDefault()">Services <span class="caret">▾</span></a>
+        <div class="dropdown-menu services-menu">
+          <a *ngFor="let s of services" [href]="getWhatsApp(s.label)" target="_blank" class="service-item">
+            <span class="s-icon">{{s.icon}}</span>
+            <span>{{s.label}}</span>
+          </a>
+        </div>
+      </li>
+      <li><a routerLink="/contact">Contact</a></li>
+    </ul>
+
+    <!-- CTA + Hamburger -->
+    <div class="nav-cta">
+      <a href="tel:7385706568" class="phone-link">📞 7385706568</a>
+      <a href="https://wa.me/917385706568?text=Hello%2C%20I%20need%20to%20book%20a%20cab" target="_blank" class="btn-gold">Book Now</a>
+      <button class="hamburger" (click)="toggleMenu()" [class.open]="menuOpen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" [class.open]="menuOpen">
+    <a routerLink="/" (click)="closeMenu()">Home</a>
+    <a routerLink="/vehicles" (click)="closeMenu()">Vehicles</a>
+    <div class="mobile-vehicle-tabs">
+      <span>Filter by:</span>
+      <div class="tabs">
+        <button *ngFor="let v of vehicleTypes"
+          [class.active]="activeVehicle === v.value"
+          (click)="setVehicle(v.value)">{{v.label}}</button>
+      </div>
+    </div>
+    <a routerLink="/contact" (click)="closeMenu()">Services</a>
+    <a routerLink="/contact" (click)="closeMenu()">Contact</a>
+    <a href="tel:7385706568" class="mobile-phone">📞 7385706568</a>
+    <a href="https://wa.me/917385706568" target="_blank" class="btn-gold" style="text-align:center">WhatsApp Us</a>
+  </div>
+</nav>

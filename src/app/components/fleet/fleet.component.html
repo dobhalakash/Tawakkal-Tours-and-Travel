@@ -1,0 +1,44 @@
+<section class="fleet-section" id="vehicles">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Our Fleet</span>
+      <h2>Choose Your <span class="gold">Perfect Ride</span></h2>
+      <p>From compact cabs to luxury coaches — the right vehicle for every group size and occasion</p>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs reveal">
+      <button *ngFor="let f of filters"
+        [class.active]="activeFilter === f.key"
+        (click)="setFilter(f.key)">
+        {{f.icon}} {{f.label}}
+      </button>
+    </div>
+
+    <!-- Vehicle Grid -->
+    <div class="vehicle-grid">
+      <div *ngFor="let v of filtered; let i = index" class="vehicle-card reveal">
+        <div class="card-badge" *ngIf="v.badge">{{v.badge}}</div>
+        <div class="card-img">
+          <img [src]="v.image" [alt]="v.name" loading="lazy" />
+          <div class="img-overlay">
+            <span class="vehicle-type">{{v.type | uppercase}} • {{v.seats}} SEATS</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>{{v.name}}</h3>
+          <div class="features">
+            <span *ngFor="let f of v.features" class="feature-tag">{{f}}</span>
+          </div>
+          <div class="card-footer">
+            <div class="price">
+              <span class="price-from">Starting</span>
+              <span class="price-val">₹{{v.startingPrice}}<small>/km</small></span>
+            </div>
+            <button class="btn-gold" (click)="bookVehicle(v)" style="padding:10px 18px;font-size:13px">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
