@@ -1,6 +1,6 @@
 {
   "buildCommand": "npm ci --legacy-peer-deps && npm run build",
-  "outputDirectory": "dist/tawakkal-tours-v2-source/browser",
+  "outputDirectory": "dist/tawakkal-tours",
   "framework": "angular",
   "installCommand": "npm ci --legacy-peer-deps",
   "env": {
